@@ -30,7 +30,7 @@ class AddRecipePage extends Component {
             <label>Recipe Title</label>
             <input
               className="form-control"
-              name="Title"
+              name="title"
               value={this.state.formData.title}
               onChange={this.handleChange}
               required
