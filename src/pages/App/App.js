@@ -6,6 +6,8 @@ import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import RecipeListPage from "../RecipeListPage/RecipeListPage";
 import AddRecipePage from "../AddRecipePage/AddRecipePage";
+import EditRecipePage from "../EditRecipePage/EditRecipePage";
+
 
 
 class App extends Component {
