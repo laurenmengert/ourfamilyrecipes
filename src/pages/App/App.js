@@ -7,9 +7,7 @@ import userService from "../../utils/userService";
 import RecipeListPage from "../RecipeListPage/RecipeListPage";
 import AddRecipePage from "../AddRecipePage/AddRecipePage";
 import EditRecipePage from "../EditRecipePage/EditRecipePage";
-import recipesService from "../../utils/recipesService"
-
-
+import recipeService from "../../utils/recipeService";
 
 class App extends Component {
   state = {
@@ -17,20 +15,35 @@ class App extends Component {
     user: userService.getUser(),
   };
 
-  handleAddRecipe = (newRecipe) => {
-    newRecipe._id = this.state.recipes.length + 1;
+  getAllRecipes = async () => {
+    const recipes = await recipeService.getAllRecipes();
     this.setState(
       {
-        recipes: [...this.state.recipes, newRecipe],
+        recipes,
       },
       () => this.props.history.push("/")
     );
   };
 
-  handleDeleteRecipe = (recipeToDelete) => {
+  handleAddRecipe = async (newRecipe) => {
+    await recipeService.createRecipe(newRecipe);
+    this.getAllRecipes();
+  };
+  // handleAddRecipe = (newRecipe) => {
+  //   newRecipe._id = this.state.recipes.length + 1;
+  //   this.setState(
+  //     {
+  //       recipes: [...this.state.recipes, newRecipe],
+  //     },
+  //     () => this.props.history.push("/")
+  //   );
+  // };
+
+  handleDeleteRecipe = async (recipeToDelete) => {
+    await recipeService.deleteRecipe(recipeToDelete);
     this.setState(
       (state) => ({
-        recipes: state.recipes.filter(
+        recipes: state.puppies.filter(
           (recipe) => recipe._id !== recipeToDelete
         ),
       }),
@@ -38,20 +51,36 @@ class App extends Component {
     );
   };
 
-  handleUpdateRecipe = (recipeToUpdate) => {
-    const updatedRecipes = this.state.recipes.map((recipe) => {
-      if (recipe._id === recipeToUpdate._id) {
-        recipe = recipeToUpdate;
-      }
-      return recipe;
-    });
-    this.setState(
-      {
-        recipes: updatedRecipes,
-      },
-      () => this.props.history.push("/")
-    );
+  // handleDeleteRecipe = (recipeToDelete) => {
+  //   this.setState(
+  //     (state) => ({
+  //       recipes: state.recipes.filter(
+  //         (recipe) => recipe._id !== recipeToDelete
+  //       ),
+  //     }),
+  //     () => this.props.history.push("/")
+  //   );
+  // };
+
+  handleUpdateRecipe = async (recipeToUpdate) => {
+    await recipeService.updateRecipe(recipeToUpdate);
+    this.getAllRecipes();
   };
+
+  // handleUpdateRecipe = (recipeToUpdate) => {
+  //   const updatedRecipes = this.state.recipes.map((recipe) => {
+  //     if (recipe._id === recipeToUpdate._id) {
+  //       recipe = recipeToUpdate;
+  //     }
+  //     return recipe;
+  //   });
+  //   this.setState(
+  //     {
+  //       recipes: updatedRecipes,
+  //     },
+  //     () => this.props.history.push("/")
+  //   );
+  // };
 
   handleLogout = () => {
     userService.logout();
@@ -110,29 +139,41 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={({ history }) => (
-                <RecipeListPage
-                  recipes={this.state.recipes}
-                  handleDeleteRecipe={this.handleDeleteRecipe}
-                />
-              )}
+              render={({ history }) =>
+                userService.getUser() ? (
+                  <RecipeListPage
+                    recipes={this.state.recipes}
+                    handleDeleteRecipe={this.handleDeleteRecipe}
+                  />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
             <Route
               exact
               path="/add"
-              render={() => (
-                <AddRecipePage handleAddRecipe={this.handleAddRecipe} />
-              )}
+              render={() =>
+                userService.getUser() ? (
+                  <AddRecipePage handleAddRecipe={this.handleAddRecipe} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
             <Route
               exact
               path="/edit"
-              render={({ history, location }) => (
-                <EditRecipePage
-                  handleUpdateRecipe={this.handleUpdateRecipe}
-                  location={location}
-                />
-              )}
+              render={({ history, location }) =>
+                userService.getUser() ? (
+                  <EditRecipePage
+                    handleUpdateRecipe={this.handleUpdateRecipe}
+                    location={location}
+                  />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
             <Route
               exact
