@@ -18,8 +18,9 @@ class AddRecipePage extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleAddPuppy(this.state.formData);
+        this.props.handleAddRecipe(this.state.formData);
     };
+
 
   render() {
     return (
