@@ -17,6 +17,7 @@ class App extends Component {
 
   getAllRecipes = async () => {
     const recipes = await recipeService.getAllRecipes();
+    console.log('recipes --->', recipes);
     this.setState(
       {
         recipes,
@@ -43,7 +44,7 @@ class App extends Component {
     await recipeService.deleteRecipe(recipeToDelete);
     this.setState(
       (state) => ({
-        recipes: state.puppies.filter(
+        recipes: state.recipes.filter(
           (recipe) => recipe._id !== recipeToDelete
         ),
       }),
@@ -95,6 +96,11 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser() });
   };
+
+  componentDidMount() {
+    this.getAllRecipes();
+  }
+
 
   render() {
     return (

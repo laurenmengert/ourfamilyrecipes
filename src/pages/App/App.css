@@ -15,7 +15,7 @@
 }
 
 .App main {
-  background-color: var(--background);
+  /* background-color: var(--background); */
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;

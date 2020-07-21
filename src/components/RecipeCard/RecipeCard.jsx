@@ -12,7 +12,7 @@ function RecipeCard({ recipe, handleDeleteRecipe }) {
           <dt>Ingredients</dt>
           <dd>{recipe.ingredients}</dd>
           <dt>Instructions</dt>
-          <dd>{recipe.instructions}</dd>
+          <dd className="Recipe-panel-item">{recipe.instructions}</dd>
         </dl>
         <div className="panel-footer">
         <Link className='btn btn-xs btn-warning' to={{ pathname: '/edit', state: {recipe: recipe} }}>EDIT</Link>
