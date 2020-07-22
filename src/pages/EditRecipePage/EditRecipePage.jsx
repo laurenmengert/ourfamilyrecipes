@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './EditRecipePage.css'
+import "./EditRecipePage.css";
 
 class EditRecipePage extends Component {
   state = {
@@ -61,7 +61,9 @@ class EditRecipePage extends Component {
             SAVE RECIPE
           </button>
           &nbsp;&nbsp;
-          <Link className="EditRecipePage-cancel" to="/">CANCEL</Link>
+          <Link className="EditRecipePage-cancel" to="/">
+            CANCEL
+          </Link>
         </form>
       </>
     );

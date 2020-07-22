@@ -17,7 +17,7 @@ class App extends Component {
 
   getAllRecipes = async () => {
     const recipes = await recipeService.getAllRecipes();
-    console.log('recipes --->', recipes);
+    console.log("recipes --->", recipes);
     this.setState(
       {
         recipes,
@@ -30,15 +30,6 @@ class App extends Component {
     await recipeService.createRecipe(newRecipe);
     this.getAllRecipes();
   };
-  // handleAddRecipe = (newRecipe) => {
-  //   newRecipe._id = this.state.recipes.length + 1;
-  //   this.setState(
-  //     {
-  //       recipes: [...this.state.recipes, newRecipe],
-  //     },
-  //     () => this.props.history.push("/")
-  //   );
-  // };
 
   handleDeleteRecipe = async (recipeToDelete) => {
     await recipeService.deleteRecipe(recipeToDelete);
@@ -52,36 +43,10 @@ class App extends Component {
     );
   };
 
-  // handleDeleteRecipe = (recipeToDelete) => {
-  //   this.setState(
-  //     (state) => ({
-  //       recipes: state.recipes.filter(
-  //         (recipe) => recipe._id !== recipeToDelete
-  //       ),
-  //     }),
-  //     () => this.props.history.push("/")
-  //   );
-  // };
-
   handleUpdateRecipe = async (recipeToUpdate) => {
     await recipeService.updateRecipe(recipeToUpdate);
     this.getAllRecipes();
   };
-
-  // handleUpdateRecipe = (recipeToUpdate) => {
-  //   const updatedRecipes = this.state.recipes.map((recipe) => {
-  //     if (recipe._id === recipeToUpdate._id) {
-  //       recipe = recipeToUpdate;
-  //     }
-  //     return recipe;
-  //   });
-  //   this.setState(
-  //     {
-  //       recipes: updatedRecipes,
-  //     },
-  //     () => this.props.history.push("/")
-  //   );
-  // };
 
   handleLogout = () => {
     userService.logout();
@@ -100,7 +65,6 @@ class App extends Component {
   componentDidMount() {
     this.getAllRecipes();
   }
-
 
   render() {
     return (
