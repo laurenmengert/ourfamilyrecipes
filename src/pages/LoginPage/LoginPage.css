@@ -5,4 +5,11 @@
     align-items: center;
     margin-bottom: 50px;
     background-color: #FFFF;
+    padding: 20px;
+    border-radius: .3em;
+    font-size: 1.3em;
+}
+
+.header-footer {
+    margin-bottom: 1em;
 }

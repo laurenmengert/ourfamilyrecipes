@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import './RecipeCard.css';
 
 function RecipeCard({ recipe, handleDeleteRecipe }) {
   return (
@@ -15,7 +16,8 @@ function RecipeCard({ recipe, handleDeleteRecipe }) {
           <dd className="Recipe-panel-item">{recipe.instructions}</dd>
         </dl>
         <div className="panel-footer">
-        <Link className='btn btn-xs btn-warning' to={{ pathname: '/edit', state: {recipe: recipe} }}>EDIT</Link>
+        <Link className='btn btn-xs btn-warning' 
+        to={{ pathname: '/edit', state: {recipe: recipe} }}>EDIT</Link>
           <button
             className="btn btn-xs btn-danger margin-left-10"
             onClick={() => handleDeleteRecipe(recipe._id)}

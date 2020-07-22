@@ -1,3 +1,11 @@
 .Recipe-panel-item {
     white-space: pre-wrap;
 }
+
+.panel-title {
+    font-size: 2em;
+}
+
+.panel-body {
+    font-size: 1.3em;
+}

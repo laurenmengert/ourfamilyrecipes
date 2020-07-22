@@ -5,7 +5,7 @@ import RecipeCard from '../../components/RecipeCard/RecipeCard';
 function RecipeListPage({ recipes, handleDeleteRecipe }) {
   return (
     <>
-      <h1>My Recipes</h1>
+      <h1 className="RecipeListPage-header">My Recipes</h1>
       <div className='RecipeListPage-grid'>
         {recipes.map(recipe =>
             <RecipeCard

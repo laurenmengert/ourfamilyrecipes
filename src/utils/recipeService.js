@@ -4,6 +4,7 @@ const BASE_URL = '/api/recipes';
 
 
 function getAllRecipes() {
+    console.log(tokenService.getTokenFromLocalStorage(), 'HIOHFIEOHIFOHEI')
   return fetch(BASE_URL, {
       headers: {
         'Authorization': `Bearer ${tokenService.getTokenFromLocalStorage()}`

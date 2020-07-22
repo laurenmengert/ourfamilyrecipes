@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './AddRecipePage.css'
 
 class AddRecipePage extends Component {
   state = {
@@ -25,8 +26,8 @@ class AddRecipePage extends Component {
   render() {
     return (
       <>
-        <h1>Add Recipe</h1>
-        <form onSubmit={this.handleSubmit}>
+        <h1 className="AddRecipePage-form-header">Add Recipe</h1>
+        <form className="AddRecipePage-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Recipe Title</label>
             <input
@@ -38,7 +39,7 @@ class AddRecipePage extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Ingredients</label>
+            <label>Ingredients (Comma separated)</label>
             <input
               className="form-control"
               name="ingredients"

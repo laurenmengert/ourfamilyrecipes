@@ -1,0 +1,13 @@
+.form-horizontal {
+    background-color: #FFFF;
+    padding: 20px;
+    border-radius: .3em;
+    font-size: 1.3em;
+}
+
+.header-footer {
+    background-color: #FFFF;
+    font-size: 1.3em;
+    padding: .5em;
+    border-radius: .3em;
+}

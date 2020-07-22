@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import './EditRecipePage.css'
 
 class EditRecipePage extends Component {
   state = {
@@ -23,8 +24,8 @@ class EditRecipePage extends Component {
   render() {
     return (
       <>
-        <h1>Edit Recipe</h1>
-        <form onSubmit={this.handleSubmit}>
+        <h1 className="EditRecipePage-header">Edit Recipe</h1>
+        <form className="EditRecipePage-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Recipe Title</label>
             <input
@@ -60,7 +61,7 @@ class EditRecipePage extends Component {
             SAVE RECIPE
           </button>
           &nbsp;&nbsp;
-          <Link to="/">CANCEL</Link>
+          <Link className="EditRecipePage-cancel" to="/">CANCEL</Link>
         </form>
       </>
     );

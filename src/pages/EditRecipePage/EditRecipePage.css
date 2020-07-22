@@ -1,0 +1,22 @@
+.EditRecipePage-form {
+    background-color: white;
+    padding: 10px;
+    border-radius: .3em;
+    font-size: 1.3em;
+}
+
+.EditRecipePage-header {
+    background-color: white ;
+    padding: 15px;
+    border: solid black 4px;
+    border-radius: .5em;
+}
+
+.EditRecipePage-cancel {
+    color: var(--secondary-dark);
+}
+
+.EditRecipePage-cancel:hover {
+    color: var(--accent);
+    background-color: var(--secondary-dark);
+}
